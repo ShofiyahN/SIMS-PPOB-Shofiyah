@@ -61,7 +61,6 @@ const AccountPage = () => {
         const response = await apiClient.put('/profile/image', formData, config);
 
         if (response) {
-          console.log(response)
           setUserData(prev => ({
             ...prev,
             image: response.data.data.profile_image
@@ -113,7 +112,6 @@ const AccountPage = () => {
     try {
       const response = await apiClient.put('/profile/update', requestBody);
       if (response) {
-        console.log(response)
         dispatch(updateUser({
             user_email: response.data?.data?.email,
             user_first_name: response.data?.data?.first_name,

@@ -14,13 +14,10 @@ function App() {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  console.log(isLoggedIn,'login ga')
-
   const getUser = async () => {
     if (!isLoading) return
     try {
       const user = await apiClient.get('/profile')
-      console.log('ini data user :', user)
       dispatch(login())
       dispatch(updateUser({
         user_email: user?.data?.data?.email,
@@ -28,12 +25,10 @@ function App() {
         user_last_name: user?.data?.data?.last_name,
         user_image: user?.data?.data?.profile_image,
       }))
-      console.log('user set done ...')
       getBalance()
     } catch (error) {
       dispatch(logout())
       localStorage.removeItem('sims-token')
-      console.log(error.message)
     } finally {
       setIsLoading(false)
     }
@@ -47,7 +42,6 @@ function App() {
           balance: balance?.data?.data.balance
         }))
       }
-      console.log('ini balance :', balance)
     } catch (error) {
       console.log(error.message)
     }

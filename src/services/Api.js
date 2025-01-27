@@ -3,7 +3,7 @@ import axios from 'axios';
 const getToken = () => localStorage.getItem('sims-token') || ''
 
 const apiClient = axios.create({
-  baseURL: 'https://take-home-test-api.nutech-integrasi.com',
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -13,7 +13,6 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     const token = getToken();
-    // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RpbmctOTk5QG1haWwuY29tIiwibWVtYmVyQ29kZSI6Ik02QVpVQTJOIiwiaWF0IjoxNzM3OTExMzM4LCJleHAiOjE3Mzc5NTQ1Mzh9.R5it3ucGngbIhExiIOsuDXQGBDNiSwGxXolXYNHJF2s'
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
@@ -25,7 +24,6 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.log(error,'sos')
     const errorMsg = error?.response?.data?.message || 
       error?.response?.data?.error || 
       error?.message || 

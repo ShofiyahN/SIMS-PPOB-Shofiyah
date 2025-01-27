@@ -25,13 +25,8 @@ const LoginPage = () => {
     }
   )
 
-  console.log(isLoggedIn,'ccc')
-
   const handleLogin = async () => {
-    // console.log('All env variables:', process.env);
-    // console.log('NODE_ENV:', process.env.NODE_ENV);
     setLoading(true)
-    console.log(process.env.REACT_APP_API_BASE_URL, 'env')
     try {
       const res = await apiClient.post('/login', dataUser)
       if (res) {

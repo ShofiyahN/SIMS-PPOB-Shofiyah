@@ -25,13 +25,11 @@ const TransactionPage = () => {
         service_code : route.slug
       })
       if (result) {
-        console.log(result, 'ini transaction')
         setAlert(false)
         setStatus({...result.data})
       }
     } catch (error) {
       setAlert(false)
-      console.log(error)
       setStatus({...error})
     }
   }
@@ -40,7 +38,6 @@ const TransactionPage = () => {
     setAlert(true)
   }
 
-  console.log(status,'cek')
 
   return (
     <Container maxW="container.xl" py={8}>

@@ -24,7 +24,6 @@ export default function AuthRouter() {
   }
   ]
 
-  console.log(isLoggedIn,'ini route auth')
   return (
     <Routes>
       {authenticationRouter?.map((x, index) => (

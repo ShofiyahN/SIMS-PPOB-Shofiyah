@@ -16,7 +16,6 @@ const TransactionHistory = () => {
     try {
       const result = await apiClient.get(`/transaction/history?offset=${offset}&limit=${limit}`)
       if (result) {
-        console.log('Transaction :', result)
         setDataTransaction([...dataTransaction, ...result.data.data.records])
         if (result?.data?.data?.records?.length < 5) {
           setLoadMore(false)

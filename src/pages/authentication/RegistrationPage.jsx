@@ -51,7 +51,6 @@ const RegistrationPage = () => {
     try {
       const signup = await apiClient.post('/registration', dataUser)
       if (signup) {
-        console.log('Data Signup :', signup)
         toast({
           title: signup.data.message,
           status: 'success',
@@ -60,7 +59,6 @@ const RegistrationPage = () => {
         navigate('/')
       }
     } catch (error) {
-      console.log('Catch Error :', error.message, error)
       setErrorRegister(true)
       toast({
           title: error.message,

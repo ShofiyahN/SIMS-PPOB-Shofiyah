@@ -37,13 +37,11 @@ const TopUpComponent = () => {
         top_up_amount: amount
       })
       if (result) {
-        console.log(result)
         setAlert(false)
         setStatus({...result.data})
       }
     } catch (error) {
       setAlert(false)
-      console.log(error)
       setStatus({...error})
     }
   }
