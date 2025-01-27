@@ -1,0 +1,17 @@
+export const imageUtils = [
+  { title: 'Auth', type: 'background', link: 'https://drive.google.com/file/d/1AN-X3sAIGpCZOxYWy-6QpR-Zazse2ycd/view?usp=drive_link' },
+  { title: 'Game', type: 'icons', link: 'https://drive.google.com/file/d/1hhYnBFwGt6QF12mOodH_7beAGhIrBjux/view?usp=drive_link' },
+  { title: 'Kurban', type: 'icons', link: 'https://drive.google.com/file/d/1cC-xN48O1Rx-WFlGFid7yKacbQozzy6u/view?usp=drive_link' },
+  { title: 'Listrik', type: 'icons', link: 'https://drive.google.com/file/d/1V-G1akgcrBrDxd3Qukp43fqpnvrljcUb/view?usp=drive_link' },
+  { title: 'Music', type: 'icons', link: 'https://drive.google.com/file/d/1Qxn19vpoUb5hGuFtHg8124zsaA3tAlVU/view?usp=drive_link' },
+  { title: 'Paket Data', type: 'icons', link: 'https://drive.google.com/file/d/1MCs46lxcTPM2h19CUQaNzYJaUpCI3ibQ/view?usp=drive_link' },
+  { title: 'PBB', type: 'icons', link: 'https://drive.google.com/file/d/1F2wNAlJAMEyQu8-3K5gqBasG0E4VDRz5/view?usp=drive_link' },
+  { title: 'PDAM', type: 'icons', link: 'https://drive.google.com/file/d/1Jhv-a4qINZRsMWJuvpT3Yi5IDJ47oBqi/view?usp=drive_link' },
+  { title: 'PGN', type: 'icons', link: 'https://drive.google.com/file/d/1c_mZVFX3z3oIwD3AMSZ50Mwto82IP8_e/view?usp=drive_link' },
+  { title: 'Pulsa', type: 'icons', link: 'https://drive.google.com/file/d/1GmJXtIA86wtY6xY3Ror5dG2iNskx6Rw5/view?usp=drive_link' },
+  { title: 'Televisi', type: 'icons', link: 'https://drive.google.com/file/d/1yvMeUrXOsus_lEUDKLs8Zjaodu8_wqiP/view?usp=drive_link' },
+  { title: 'Voucher Makanan', type: 'icons', link: 'https://drive.google.com/file/d/1ik1Q2q5EAYIgi6h-qH-wMwUupB0JvXk6/view?usp=drive_link' },
+  { title: 'Zakat', type: 'icons', link: 'https://drive.google.com/file/d/1aPF3Lex7om3COUBgHJPERUstcShK6iAZ/view?usp=drive_link' },
+  { title: 'Logo', type: 'logo', link: 'https://drive.google.com/file/d/1Ahjlmg_uo8mj9JqFoDIxvPd3pZyWfL0V/view?usp=drive_link' },
+  { title: 'Profile', type: 'profile', link: 'https://drive.google.com/file/d/1Ahjlmg_uo8mj9JqFoDIxvPd3pZyWfL0V/view?usp=drive_link' },
+]
