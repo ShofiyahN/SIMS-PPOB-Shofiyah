@@ -8,7 +8,8 @@ import {
   Text,
   IconButton,
   useToast,
-  Container
+  Container,
+  Stack
 } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,7 +30,7 @@ const AccountPage = () => {
   });
   const [loading, setLoading] = useState(false)
   const [loadingV2, setLoadingV2] = useState(false)
-  const [status, setStatus] = useState()
+  const [handleEdit, setHandleEdit] = useState(false)
 
   const handleImageClick = () => {
     fileInputRef.current.click();
@@ -116,7 +117,8 @@ const AccountPage = () => {
             user_email: response.data?.data?.email,
             user_first_name: response.data?.data?.first_name,
             user_last_name: response.data?.data?.last_name,
-          }))
+        }))
+        setHandleEdit(false)
       }
     } catch (error) {
       toast({
@@ -202,24 +204,49 @@ const AccountPage = () => {
             />
           </Box>
 
-          <Button
-            variant="outline"
-            colorScheme="red"
-            w="100%"
-            type="submit"
-            isLoading={loading}
-          >
-            Edit Profile
-          </Button>
+          {handleEdit ?
+            <Stack w={'100%'} spacing={6}>
+              <Button
+                variant="outline"
+                colorScheme="red"
+                w="100%"
+                type="submit"
+                isLoading={loading}
+              >
+                Simpan
+              </Button>
 
-          <Button
-            colorScheme="red"
-            w="100%"
-            onClick={handleLogout}
-            isLoading={loadingV2}
-          >
-            Logout
-          </Button>
+              <Button
+                colorScheme="red"
+                w="100%"
+                onClick={() => setHandleEdit(false)}
+                isLoading={loadingV2}
+              >
+                Batalkan
+              </Button>
+            </Stack> :
+            <Stack w={'100%'} spacing={6}>
+              <Button
+                variant="outline"
+                colorScheme="red"
+                w="100%"
+                onClick={() => setHandleEdit(true)}
+              >
+                Edit Profile
+              </Button>
+
+              <Button
+                colorScheme="red"
+                w="100%"
+                onClick={handleLogout}
+                isLoading={loadingV2}
+              >
+                Logout
+              </Button>
+            </Stack>
+          }
+
+          
         </VStack>
       </VStack>
     </Container>

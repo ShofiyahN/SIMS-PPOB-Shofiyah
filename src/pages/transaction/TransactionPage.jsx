@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router'
 import BalanceComponent from '../../components/card/BalanceComponent'
 import UserComponent from '../../components/card/UserComponent'
 import AlertDialogComponent from '../../components/dialog/DialogComponent'
+import { updateBalance } from '../../features/authSlice'
 import { clearService } from '../../features/serviceSlice'
 import apiClient from '../../services/Api'
 import { formatNumber } from '../../utils/formatNumber'
@@ -15,6 +16,7 @@ const TransactionPage = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const dataServices = useSelector((state) => state.services)
+  const dataBalance = useSelector((state) => state.auth.balance)
 
   const [alert, setAlert] = useState(false)
   const [status, setStatus] = useState(null)
@@ -26,7 +28,10 @@ const TransactionPage = () => {
       })
       if (result) {
         setAlert(false)
-        setStatus({...result.data})
+        setStatus({ ...result.data })
+        dispatch(updateBalance({
+          balance: (dataBalance - dataServices?.service_tariff)
+        }))
       }
     } catch (error) {
       setAlert(false)

@@ -3,7 +3,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const UserComponent = () => {
-  const user = useSelector((state) => state.auth.user)
+  const user = useSelector((state) => state.auth.user) ?? {
+    image: '/profile-default.png',
+    first_name: '',
+    last_name: ''
+  }
   return (
     <VStack spacing={4} align={'right'}>
       <Avatar size="lg" src={user.image === 'https://minio.nutech-integrasi.com/take-home-test/null' 

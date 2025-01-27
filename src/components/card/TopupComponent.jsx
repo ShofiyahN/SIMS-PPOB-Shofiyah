@@ -18,9 +18,13 @@ import { MdMoney } from 'react-icons/md';
 import apiClient from '../../services/Api';
 import AlertDialogComponent from '../dialog/DialogComponent';
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateBalance } from '../../features/authSlice';
 
 const TopUpComponent = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const dataBalance = useSelector((state) => state.auth.balance)
   const amounts = [10000, 20000, 50000, 100000, 250000, 500000];
   
   const [amount, setAmount] = useState(null);
@@ -38,7 +42,10 @@ const TopUpComponent = () => {
       })
       if (result) {
         setAlert(false)
-        setStatus({...result.data})
+        setStatus({ ...result.data })
+        dispatch(updateBalance({
+          balance: (dataBalance + amount)
+        }))
       }
     } catch (error) {
       setAlert(false)

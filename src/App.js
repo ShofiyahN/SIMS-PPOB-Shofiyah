@@ -7,11 +7,11 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { login, logout, updateBalance, updateUser } from './features/authSlice';
 import { useNavigate } from 'react-router';
+import { Spinner, Stack } from '@chakra-ui/react';
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch()
-  const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
   const getUser = async () => {
@@ -51,6 +51,10 @@ function App() {
     getUser()
   }, [])
   
+  if (isLoading) {
+    return <Stack h={'100vh'} alignItems={'center'} justify={'center'}><Spinner size={'lg'}/></Stack>
+  }
+
   return (
     <div>
       {isLoggedIn ? 

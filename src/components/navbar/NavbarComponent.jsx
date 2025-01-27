@@ -1,8 +1,10 @@
 import { Box, Flex, HStack, Image, Link, Text } from '@chakra-ui/react'
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+  console.log(location,'ini location')
   return (
     <Box as="nav" borderBottom="1px" borderColor="gray.200" bg="white" w={'full'}>
       <Flex 
@@ -22,9 +24,9 @@ const Navbar = () => {
         </HStack>
 
         <Flex gap={8}>
-          <Link color="gray.700" _hover={{ color: "gray.900" }} onClick={() => navigate('/topup')}>Top Up</Link>
-          <Link color="gray.700" _hover={{ color: "gray.900" }} onClick={() => navigate('/transaction')}>Transaction</Link>
-          <Link color="gray.700" _hover={{ color: "gray.900" }} onClick={() => navigate('/account')}>Akun</Link>
+          <Link color="gray.700" _hover={{ color: "gray.900" }} color={location.pathname === '/topup' ? 'red' : 'black'} onClick={() => navigate('/topup')}>Top Up</Link>
+          <Link color="gray.700" _hover={{ color: "gray.900" }} color={location.pathname === '/transaction' ? 'red' : 'black'} onClick={() => navigate('/transaction')}>Transaction</Link>
+          <Link color="gray.700" _hover={{ color: "gray.900" }} color={location.pathname === '/account' ? 'red' : 'black'} onClick={() => navigate('/account')}>Akun</Link>
         </Flex>
       </Flex>
     </Box>

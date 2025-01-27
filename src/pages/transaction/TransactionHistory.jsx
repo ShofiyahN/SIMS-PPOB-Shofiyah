@@ -53,6 +53,12 @@ const TransactionHistory = () => {
             </HStack>
         </Stack>
       ))}
+
+      {dataTransaction?.length === 0 && 
+        <Stack alignItems={'center'}>
+          <Text fontSize={'xs'} color={'gray.400'}>Maaf tidak ada transaksi saat ini</Text>
+        </Stack>
+      }
       {loadMore &&
         <Stack align={'center'} p={3}>
           <Button color={'red'} colorScheme={'white'} w={'fit-content'} onClick={() => setOffset(offset + 1)}>Show More</Button>

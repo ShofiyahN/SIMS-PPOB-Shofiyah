@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router'
 import apiClient from '../../services/Api'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { login } from '../../features/authSlice';
+import { login, updateBalance, updateUser } from '../../features/authSlice';
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -31,8 +31,18 @@ const LoginPage = () => {
       const res = await apiClient.post('/login', dataUser)
       if (res) {
         localStorage.setItem('sims-token', res?.data?.data?.token)
-        dispatch(login())
-        navigate('/')
+        const user = await apiClient.get('/profile')
+        if (user) {
+          dispatch(login())
+          dispatch(updateUser({
+            user_email: user?.data?.data?.email,
+            user_first_name: user?.data?.data?.first_name,
+            user_last_name: user?.data?.data?.last_name,
+            user_image: user?.data?.data?.profile_image,
+          }))
+          getBalance()
+        }
+        
       }
     } catch (error) {
       console.log(error)
@@ -47,6 +57,19 @@ const LoginPage = () => {
       }
     } finally {
         setLoading(false)
+    }
+  }
+
+  const getBalance = async () => {
+    try {
+      const balance = await apiClient.get('/balance')
+      if (balance) {
+        dispatch(updateBalance({
+          balance: balance?.data?.data.balance
+        }))
+      }
+    } catch (error) {
+      console.log(error.message)
     }
   }
 
@@ -105,6 +128,11 @@ const LoginPage = () => {
               colorScheme={'red'}
               onClick={handleLogin}
               isLoading={loading}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleLogin()
+                }
+              }}
             >
               Masuk
             </Button>
@@ -129,8 +157,7 @@ const LoginPage = () => {
             />
         </Stack>
         </HStack>
-        
-       </Stack>
+    </Stack>
   )
 }
 
