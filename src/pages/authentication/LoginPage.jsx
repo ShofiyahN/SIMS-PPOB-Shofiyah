@@ -87,7 +87,7 @@ const LoginPage = () => {
 
           <HStack w={'50%'} justify={'center'}>
             <Image src={'Logo.png'}/>
-            <Text fontWeight={'semibold'} fontSize={'2xl'}>SIMS POMB</Text>
+            <Text fontWeight={'semibold'} fontSize={'2xl'}>SIMS PPOB</Text>
           </HStack>
 
           <Text fontWeight={'semibold'} fontSize={'3xl'} w={'45%'} textAlign={'center'}>
@@ -151,7 +151,7 @@ const LoginPage = () => {
           }
           
         </Stack>
-        <Stack w={'50%'}>
+        <Stack >
             <Image
               src={'img_1.png'} h={'100vh'}
             />

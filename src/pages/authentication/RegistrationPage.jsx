@@ -171,7 +171,7 @@ const RegistrationPage = () => {
           }
           
           </Stack>
-        <Stack w={'50%'}>
+        <Stack >
             <Image
               src={'img_1.png'} h={'100vh'} w={'full'}
             />
